@@ -1,0 +1,37 @@
+{
+  "name": "servicenow-mcp",
+  "version": "1.0.0",
+  "description": "A compact Model Context Protocol (MCP) server for ServiceNow: Table API CRUD, aggregates, incidents, CMDB, knowledge, and user lookup.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "servicenow-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "servicenow",
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "itsm"
+  ],
+  "author": "Vikram Karety",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vikram-karety/ServiceNow"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  }
+}
