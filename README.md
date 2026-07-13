@@ -1,84 +1,37 @@
 # ServiceNow
 
-ServiceNow engineering by [Vikram Karety](https://octigosol.com/vikram). Two projects live here:
+ServiceNow engineering by [Vikram Karety](https://octigosol.com/vikram): open tooling that brings AI to the Now Platform and platform discipline to AI.
 
-- **[ServiceNow MCP](ServiceNow%20MCP/)**: a compact Model Context Protocol server that connects AI assistants to a ServiceNow instance
-- **[ServiceNow Code Review](ServiceNow%20Code%20Review/)**: a Claude Code skill for writing, reviewing, and debugging every ServiceNow script type, with a standalone 40-rule linter
+## Projects
 
----
+### [ServiceNow MCP](ServiceNow%20MCP/)
 
-# ServiceNow MCP
+A compact Model Context Protocol server that connects AI assistants (Claude, and any MCP-compatible client) to a ServiceNow instance. Twelve focused tools covering the essentials: Table API CRUD, aggregates, incident lifecycle, CMDB queries, knowledge search, and user lookup.
 
-A compact [Model Context Protocol](https://modelcontextprotocol.io) server that connects AI assistants (Claude, and any MCP-compatible client) to a ServiceNow instance. Twelve focused tools covering the essentials: Table API CRUD, aggregates, incident lifecycle, CMDB queries, knowledge search, and user lookup.
-
-This is the limited public edition of a larger private toolset by [Vikram Karety](https://octigosol.com/vikram).
-
-## Tools
-
-| Tool | What it does |
-|------|--------------|
-| `list_records` | Query any table with encoded queries, field selection, and pagination |
-| `get_record` | Fetch a single record by sys_id |
-| `create_record` | Insert into any table |
-| `update_record` | Patch any record by sys_id |
-| `delete_record` | Delete a record by sys_id |
-| `aggregate_records` | Count records, optionally grouped by a field |
-| `create_incident` | Create an incident with common fields |
-| `update_incident` | Update by number or sys_id, append comments or work notes |
-| `search_knowledge` | Full-text search across published knowledge articles |
-| `cmdb_query` | Query configuration items by CI class |
-| `get_user` | Look up a user by user_name, email, or sys_id |
-| `instance_info` | Build name, version, and the authenticated user |
-
-## Setup
-
-Requires Node.js 18+ and a ServiceNow instance (a free [Personal Developer Instance](https://developer.servicenow.com) works).
+- Credentials from environment variables only; nothing stored or logged
+- Every write goes through the standard Table API, so instance ACLs always apply
+- Runs against any instance, including a free Personal Developer Instance
 
 ```bash
-git clone https://github.com/vikram-karety/ServiceNow.git
-cd "ServiceNow/ServiceNow MCP"
-npm install
-npm run build
+cd "ServiceNow MCP" && npm install && npm run build
 ```
 
-## Configuration
+Full setup, configuration, and example prompts: [ServiceNow MCP/README.md](ServiceNow%20MCP/README.md)
 
-Set three environment variables:
+### [ServiceNow Code Review](ServiceNow%20Code%20Review/)
 
-| Variable | Example |
-|----------|---------|
-| `SN_INSTANCE_URL` | `https://dev12345.service-now.com` |
-| `SN_USERNAME` | `admin` |
-| `SN_PASSWORD` | your password |
+A Claude Code skill for full-lifecycle ServiceNow engineering: write, review, complete, debug, and find-missing code across every ServiceNow script type, from Business Rules and Client Scripts to UI Pages, Service Portal widgets, Scripted REST, ACLs, and Performance Analytics.
 
-### Claude Desktop / Claude Code
+- Auto-routes between review, author, complete, debug, and find-missing modes
+- Hunts the platform's silent no-ops: code that compiles to nothing, wrong-scope saves, Jelly-eaten template literals
+- Ships a standalone zero-dependency linter with 40 deterministic rules, usable in CI without Claude
 
-```json
-{
-  "mcpServers": {
-    "servicenow": {
-      "command": "node",
-      "args": ["/path/to/ServiceNow/ServiceNow MCP/dist/index.js"],
-      "env": {
-        "SN_INSTANCE_URL": "https://dev12345.service-now.com",
-        "SN_USERNAME": "admin",
-        "SN_PASSWORD": "..."
-      }
-    }
-  }
-}
+```bash
+cp -R "ServiceNow Code Review" ~/.claude/skills/servicenow-code-review
 ```
 
-## Example prompts
+Install, usage, and the full reference layout: [ServiceNow Code Review/README.md](ServiceNow%20Code%20Review/README.md)
 
-- "Show me the five most recent P1 incidents."
-- "How many open incidents per assignment group?"
-- "Create an incident: email is down for the Austin office."
-- "Find knowledge articles about VPN setup."
-- "Which Linux servers are in the CMDB?"
+## License
 
-## Notes
-
-- Credentials come only from environment variables. Nothing is stored or logged.
-- Writes go through the standard Table API and respect your instance's ACLs.
-- MIT licensed.
+MIT for everything in this repository.
