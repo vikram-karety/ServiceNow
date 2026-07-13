@@ -1,3 +1,12 @@
+# ServiceNow
+
+ServiceNow engineering by [Vikram Karety](https://octigosol.com/vikram). Two projects live here:
+
+- **[ServiceNow MCP](ServiceNow%20MCP/)**: a compact Model Context Protocol server that connects AI assistants to a ServiceNow instance
+- **[ServiceNow Code Review](ServiceNow%20Code%20Review/)**: a Claude Code skill for writing, reviewing, and debugging every ServiceNow script type, with a standalone 40-rule linter
+
+---
+
 # ServiceNow MCP
 
 A compact [Model Context Protocol](https://modelcontextprotocol.io) server that connects AI assistants (Claude, and any MCP-compatible client) to a ServiceNow instance. Twelve focused tools covering the essentials: Table API CRUD, aggregates, incident lifecycle, CMDB queries, knowledge search, and user lookup.
