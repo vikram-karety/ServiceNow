@@ -1,6 +1,6 @@
 # ServiceNow MCP
 
-A compact [Model Context Protocol](https://modelcontextprotocol.io) server that connects AI assistants (Claude, and any MCP-compatible client) to a ServiceNow instance. Twelve focused tools covering the essentials: Table API CRUD, aggregates, incident lifecycle, CMDB queries, knowledge search, and user lookup.
+A compact [Model Context Protocol](https://modelcontextprotocol.io) server that connects AI assistants (any MCP-compatible client) to a ServiceNow instance. Twelve focused tools covering the essentials: Table API CRUD, aggregates, incident lifecycle, CMDB queries, knowledge search, and user lookup.
 
 This is the limited public edition of a larger private toolset by [Vikram Karety](https://octigosol.com/vikram).
 
@@ -42,7 +42,7 @@ Set three environment variables:
 | `SN_USERNAME` | `admin` |
 | `SN_PASSWORD` | your password |
 
-### Claude Desktop / Claude Code
+### Assistant configuration (any MCP client)
 
 ```json
 {
