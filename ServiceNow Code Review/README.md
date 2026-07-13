@@ -1,10 +1,10 @@
 # ServiceNow Code Review
 
-An AI coding assistant skill for full-lifecycle ServiceNow engineering: **write, review, complete, debug, and find-missing** code across every ServiceNow script type. It gives the AI a platform architect's discipline: classify the execution context, run a deterministic linter, ask the right platform questions, and hunt the silent no-op (code that compiles to nothing, lands in the wrong scope, or matches the wrong record with no error).
+A Claude Code skill for full-lifecycle ServiceNow engineering: **write, review, complete, debug, and find-missing** code across every ServiceNow script type. It gives the AI a platform architect's discipline: classify the execution context, run a deterministic linter, ask the right platform questions, and hunt the silent no-op (code that compiles to nothing, lands in the wrong scope, or matches the wrong record with no error).
 
 ## Install
 
-Works with AI coding assistants that support the open skills format (a folder with a `SKILL.md`, discovered from `~/.claude/skills`).
+Requires [Claude Code](https://claude.com/claude-code). Skills are folders under `~/.claude/skills`.
 
 ```bash
 git clone https://github.com/vikram-karety/ServiceNow.git
@@ -12,7 +12,7 @@ mkdir -p ~/.claude/skills
 cp -R "ServiceNow/ServiceNow Code Review" ~/.claude/skills/servicenow-code-review
 ```
 
-That is the whole install. The assistant discovers the skill automatically in your next session.
+That is the whole install. Claude Code discovers the skill automatically in your next session.
 
 ## Use
 
@@ -39,7 +39,7 @@ Business Rules, Script Includes, Client and Catalog Scripts, UI Policies, UI Act
 
 ## The standalone linter
 
-The skill ships a zero-dependency linter you can run standalone, in CI or by hand:
+The skill ships a zero-dependency linter you can run without Claude, in CI or by hand:
 
 ```bash
 node scripts/sn-lint.js path/to/code [--json]
@@ -64,6 +64,6 @@ Forty deterministic rules target the platform's silent-failure traps: Rhino rese
 
 ## Why it exists
 
-ServiceNow's hardest bugs are the quiet ones: the script that runs and does nothing, the record that saves into the wrong scope, the template literal a Jelly page silently ate. This skill encodes those hard-won lessons so any developer using an AI assistant gets them on day one. Built by [Vikram Karety](https://octigosol.com/vikram) from real enterprise delivery experience.
+ServiceNow's hardest bugs are the quiet ones: the script that runs and does nothing, the record that saves into the wrong scope, the template literal a Jelly page silently ate. This skill encodes those hard-won lessons so any developer with Claude Code gets them on day one. Built by [Vikram Karety](https://octigosol.com/vikram) from real enterprise delivery experience.
 
 MIT licensed, like the rest of this repository.
